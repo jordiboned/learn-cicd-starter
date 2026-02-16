@@ -24,7 +24,7 @@ func respondWithError(w http.ResponseWriter, code int, msg string, logErr error)
 func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
-	err := json.NewEnconder(w).Encode(payload)
+	err := json.NewEncoder(w).Encode(payload)
 	if err != nil {
 		log.Printf("Error encoding JSON: %s", err)
 		w.WriteHeader(500)
